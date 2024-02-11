@@ -19,32 +19,62 @@
         <h2>Dashboard</h2>
 
         <!-- Single profile card -->
-        <div class="profile-card">
+        <div class="profile-card" id="profileCard">
             <h3>Profile 1</h3>
-            <p>Details about Profile 1.</p>
+            <!-- Mock data for profile details -->
+            <p><strong>Name:</strong> Ryan Rudes</p>
+            <p><strong>Grade:</strong> 13th</p>
+            <p><strong>Experience:</strong> Deep Learning</p>
+            <p><strong>Days of Week Free:</strong> Monday, Wednesday, Friday</p>
+            <p><strong>GitHub Profile:</strong> <a href="https://github.com/ryanrudes" target="_blank">ryanrudes</a></p>
         </div>
     </div>
 
     <script>
+        let startX;
+        let endX;
+        const profileCard = document.getElementById('profileCard');
+
+        profileCard.addEventListener('touchstart', handleTouchStart, false);
+        profileCard.addEventListener('touchmove', handleTouchMove, false);
+
+        function handleTouchStart(event) {
+            startX = event.touches[0].clientX;
+        }
+
+        function handleTouchMove(event) {
+            endX = event.touches[0].clientX;
+        }
+
+        profileCard.addEventListener('touchend', handleTouchEnd, false);
+
+        function handleTouchEnd() {
+            const deltaX = endX - startX;
+
+            // You can adjust the threshold for a swipe here
+            const swipeThreshold = 50;
+
+            if (deltaX > swipeThreshold) {
+                // Swipe right (positive deltaX)
+                // Add your logic to handle the swipe action (e.g., remove the card)
+                profileCard.style.transform = 'translateX(200%)'; // Disappear to the right
+            } else if (deltaX < -swipeThreshold) {
+                // Swipe left (negative deltaX)
+                // Add your logic to handle the swipe action (e.g., remove the card)
+                profileCard.style.transform = 'translateX(-200%)'; // Disappear to the left
+            } else {
+                // No significant swipe, reset the card position
+                profileCard.style.transform = 'translateX(0)';
+            }
+        }
+
         function viewProfile() {
-            // Redirect to the GitHub login
             signInWithGitHub();
         }
 
         function signInWithGitHub() {
-            // GitHub OAuth settings
-            const clientId = 'f90b8ad17e614bac5c55';
-            const redirectUri = 'https://icebreakrhack.vercel.app';
-            
-            // Check if there is a code parameter in the URL
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('code')) {
-                // User has returned from GitHub login, open the profile page
-                window.location.href = 'profile.html';
-            } else {
-                // Redirect the user to GitHub for authentication
-                window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=user`;
-            }
+            // Redirect the user to GitHub for authentication
+            window.open('https://github.com/login/oauth/authorize?client_id=f90b8ad17e614bac5c55&redirect_uri=https://icebreakrhack.vercel.app/&scope=user', '_blank');
         }
     </script>
 </body>
