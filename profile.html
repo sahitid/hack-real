@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - Your Cute Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Your Cute Website</h1>
+            <button>View Profile</button>
+        </nav>
+    </header>
+
+    <div id="container">
+        <div class="profile-card">
+            <h2>Edit Profile</h2>
+            <div class="profile-details">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+
+                <label for="grade">Grade:</label>
+                <input type="text" id="grade" name="grade" placeholder="Enter your grade">
+
+                <label for="experience">Experience:</label>
+                <input type="text" id="experience" name="experience" placeholder="Enter your experience">
+
+                <label for="daysOfWeekFree">Days of Week Free:</label>
+                <input type="text" id="daysOfWeekFree" name="daysOfWeekFree" placeholder="Enter your available days">
+
+                <label for="githubProfile">GitHub Profile:</label>
+                <input type="text" id="githubProfile" name="githubProfile" placeholder="Enter your GitHub profile URL">
+                
+                <!-- Edit/Submit Button -->
+                <button onclick="submitProfile()">Submit</button>
+                
+                <!-- Link to go back to the dashboard page -->
+                <a href="index.html">Go back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitProfile() {
+            // Add logic to handle the submission of the profile data
+            alert('Profile submitted!'); // Replace this with your logic
+        }
+    </script>
+</body>
+</html>

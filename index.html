@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - iceBreakr</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>🧊 iceBreakr</h1>
+            <button onclick="viewProfile()">View Profile</button>
+        </nav>
+    </header>
+
+    <div id="container">
+        <h2>Dashboard</h2>
+
+        <!-- Single profile card -->
+        <div class="profile-card">
+            <h3>Profile 1</h3>
+            <p>Details about Profile 1.</p>
+        </div>
+    </div>
+
+    <script>
+        function viewProfile() {
+            // Redirect to the GitHub login
+            signInWithGitHub();
+        }
+
+        function signInWithGitHub() {
+            // GitHub OAuth settings
+            const clientId = 'f90b8ad17e614bac5c55';
+            const redirectUri = 'https://icebreakrhack.vercel.app';
+            
+            // Check if there is a code parameter in the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('code')) {
+                // User has returned from GitHub login, open the profile page
+                window.location.href = 'profile.html';
+            } else {
+                // Redirect the user to GitHub for authentication
+                window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=user`;
+            }
+        }
+    </script>
+</body>
+</html>
