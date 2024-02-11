@@ -10,7 +10,7 @@
     <header>
         <nav>
             <h1>🧊 iceBreakr</h1>
-            <button>View Profile</button>
+            <button onclick="goDashboard()">Dashboard</button>
         </nav>
     </header>
 
@@ -36,8 +36,6 @@
                 <!-- Edit/Submit Button -->
                 <button onclick="submitProfile()">Submit</button>
                 
-                <!-- Link to go back to the dashboard page -->
-                <a href="index.html">Go back to Dashboard</a>
             </div>
         </div>
     </div>
@@ -46,6 +44,11 @@
         function submitProfile() {
             // Add logic to handle the submission of the profile data
             alert('Profile submitted!'); // Replace this with your logic
+            goDashboard();
+        }
+
+        function goDashboard(){
+            window.location.href = 'index.html';
         }
     </script>
 </body>
